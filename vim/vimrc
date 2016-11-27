@@ -1,0 +1,23 @@
+set nocompatible			" be iMproved
+filetype off				" turn off filetype detection 
+
+set rtp+=~/.vim/bundle/Vundle.vim	" set runtime path to include Vundle
+
+
+call vundle#begin()			" Begin list of plugins
+
+Plugin 'VundleVim/vundle'		" Vundle
+Plugin 'sjl/gundo'			" Graphical undo tree
+	
+
+call vundle#end()
+filetype plugin indent on		" turn on plugin indentation
+
+" Custom Keybindings
+let mapleader=","
+inoremap jk <esc> 
+noremap gV `[v`]
+nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
