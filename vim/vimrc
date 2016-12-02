@@ -17,6 +17,7 @@ Plugin 'kien/ctrlp.vim'                             " Fuzzy file, buffer, mru, t
 Plugin 'scrooloose/nerdtree'                        " File structure navigation for project management
 Plugin 'easymotion/vim-easymotion'                  " Corrected motions
 Plugin 'vim-syntastic/syntastic'                    " Syntax checking plugin for vim
+Plugin 'Valloric/YouCompleteMe'                     " Apparantly powerful autocompletion functionality (This does not work yet)
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -38,6 +39,7 @@ set expandtab
 " }}}
 
 " UI layout {{{
+set mouse=h                                         " Enable mouse features 
 set number                                          " Standard line numbering
 set relativenumber                                  " Relative line numbering
 set showcmd                                         " Show command history
