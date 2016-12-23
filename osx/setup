@@ -1,0 +1,27 @@
+# InsomniaX
+# BetterTouchTools
+# TeX
+# Mendeley
+
+# Install xCode
+xcode-select --install
+sudo xcodebuild -license
+
+# Install Brew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# Install ZSH
+brew install zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Change Theme to Agnoster: zsh-theme:"agnoster"
+sh -c "$(curl -fsSL https://raw.github.cofim/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Install argp-standalone
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null 2> /dev/null
+brew install argp-standalone
+
+# Install further libraries
+brew install gcc
+brew install openmpi
+brew install libiomp
+brew install gsl
