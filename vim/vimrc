@@ -107,6 +107,7 @@ nnoremap <leader><space> :nohlsearch<CR>|           " end search highlighting
 nnoremap <leader>a :Ag |                            " pull up the silver searcher
 nnoremap <leader>f :CtrlP |                         " pull up fuzzy file search
 nnoremap <leader>n :NERDTreeToggle<CR>|             " navigate filestructure with nerdtree 
+nnoremap <leader>r :call VIMRun()<CR>| " Run the command indexed by the magic word vim-run
 " }}}
 
 " Custom Functions {{{
@@ -117,6 +118,21 @@ function! NumberToggle()
         set relativenumber
     endif
 endfunc 
+
+function! VIMRun()
+    "Ale Gallo's VimRun function.
+    let magic_word = "vim-run:"
+    try
+        exec "vimgrep /".magic_word."/j %"
+        let qflist = getqflist()
+        let whole_text = qflist[0]['text']
+        let command_to_run=substitute(whole_text, "^.*".magic_word." *", "","")
+    catch
+        let command_to_run = './%'
+    endtry
+    echo command_to_run
+    exec ":!".command_to_run
+endfunction
 " }}}
 
 " Training Keybindings {{{
