@@ -96,6 +96,11 @@ alias prep-env='export GIT_PATH=`git rev-parse --show-toplevel`; export PATH=$GI
 # Always 2 sided print
 alias lprt='lpr -o sides=two-sided-long-edge'
 
+# Personal Functions
+function cs(){
+    cd "$@" && ls
+}
+
 ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
 if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
