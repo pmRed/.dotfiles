@@ -23,10 +23,11 @@
 
 % Physics
 \RequirePackage{physics}
+\RequirePackage{braket}
 
 % Graphics
-
-%\RequirePackage{graphicx}       % More graphics options
+\RequirePackage{graphicx}
+\RequirePackage{subcaption}
 \RequirePackage{tikz}           % Custom diagrams within LaTeX
 
 % Tables

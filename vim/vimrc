@@ -18,6 +18,7 @@ Plugin 'scrooloose/nerdtree'                        " File structure navigation 
 Plugin 'easymotion/vim-easymotion'                  " Corrected motions
 Plugin 'vim-syntastic/syntastic'                    " Syntax checking plugin for vim
 Plugin 'Valloric/YouCompleteMe'                     " Apparantly powerful autocompletion functionality (This does not work yet)
+Plugin 'gerw/vim-latex-suite'                       " Latex folding and other stuff
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -37,6 +38,11 @@ set whichwrap+=h,l
 set tabstop=4
 set softtabstop=4
 set expandtab
+" }}}
+
+" Spelling and Language {{{
+set spelllang=en_au
+hi SpellBad cterm=underline
 " }}}
 
 " UI layout {{{
@@ -77,9 +83,10 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['pylint']
+let g:SyntasticToggleMode = 1
 " }}}
 
 " Folding {{{
@@ -103,13 +110,14 @@ nnoremap <leader>ev :vsp $MYVIMRC<CR>|              " vim open .vimrc
 nnoremap <leader>ez :vsp ~/.zshrc<CR>|              " vim open .zshrc
 nnoremap <leader>sv :source $MYVIMRC<CR>|           " resource .vimrc
 nnoremap <leader>ip :PluginInstall<CR>|             " install pluggins
-nnoremap <leader>s :mksession<CR>|                  " super save session
+nnoremap <leader>ms :mksession<CR>|                  " super save session
 nnoremap <leader><space> :nohlsearch<CR>|           " end search highlighting
 nnoremap <leader>a :Ag |                            " pull up the silver searcher
 nnoremap <leader>f :CtrlP |                         " pull up fuzzy file search
 nnoremap <leader>n :NERDTreeToggle<CR>|             " navigate filestructure with nerdtree 
 nnoremap <leader>r :call VIMRun()<CR>| " Run the command indexed by the magic word vim-run
-nnoremap <leader>sc :SyntasticToggleMode<CR>|   "Turn of Syntastic checking when you want to hide how bad your code is.
+nnoremap <leader>st :SyntasticToggleMode<CR>|   "Turn of Syntastic checking when you want to hide how bad your code is.
+nnoremap <leader>sc :set spell! spelllang=en_au<CR>|        " Toggle spell checking
 " }}}
 
 " Custom Functions {{{
@@ -144,7 +152,7 @@ endfunction
 inoremap jk <esc>|                                  " remap esc to 
 noremap gV `[v`]|                                   " highlight last inserted block
 "Remove all trailing whitespace by pressing F5
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap ; :|                                       " remap ; to :, reduce the number of shift presses required
 nnoremap <Space> i_<Esc>r|                      "Insert a single character.
 " }}}
