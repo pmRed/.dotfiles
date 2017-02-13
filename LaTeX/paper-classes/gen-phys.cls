@@ -4,7 +4,7 @@
 \ProvidesClass{gen-phys}[11/01/2017 Paper Class]
 
 % Base Class Setup {{{
-\LoadClass[aps, pra, twocolumn, superscriptaddress, showkeys]{revtex4-1}
+\LoadClass[titlepage, aps, pra, twocolumn, superscriptaddress, showkeys]{revtex4-1}
 %}}}
 
 % Required Packages {{{
@@ -45,8 +45,25 @@
 \newcommand{\ii}{\imath}
 \newcommand{\ml}[1]{\left#1}
 \newcommand{\mr}[1]{\right#1}
+\newcommand{\dvec}{\vec}
 %}}}
 
+% Custom defined listing environments {{{
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\fmark}{\ding{229}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+\newcommand{\continue}{\large\hspace{1pt}\fmark}
+
+\newenvironment{titleitemize}[1]{%
+  \paragraph*{#1}
+  \begin{itemize}}
+  {\end{itemize}}
+%}}}
 
 % vim-run: make
 % vim:foldmethod=marker:foldlevel=0 
