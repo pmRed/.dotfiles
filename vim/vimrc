@@ -21,6 +21,7 @@ Plugin 'vim-syntastic/syntastic'                    " Syntax checking plugin for
 Plugin 'Valloric/YouCompleteMe'                     " Apparantly powerful autocompletion functionality (This does not work yet)
 Plugin 'gerw/vim-latex-suite'                       " Latex folding and other stuff
 Plugin 'gioele/vim-autoswap'                        " Fixing the annoying swp file behaviour that delete a lot of my work
+Plugin 'neovimhaskell/haskell-vim'                  "Better haskell highlighting, vimscripts, tabbing, etc.
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -48,7 +49,7 @@ hi SpellBad cterm=underline
 " }}}
 
 " UI layout {{{
-set mouse=h                                         " Enable mouse features 
+set mouse=a                                         " Enable mouse features in all modes
 set number                                          " Standard line numbering
 set relativenumber                                  " Relative line numbering
 set showcmd                                         " Show command history
