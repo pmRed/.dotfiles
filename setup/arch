@@ -1,0 +1,11 @@
+# Notes for Lenovo X1 Yoga Carbon Arch install
+# Forgot initial setup so we are going to skip forward to a working arch boot and nicely set up zsh and termite
+# General notes:
+# 	- XFE file system
+# 	- Inconsolata for Powerline
+# 	- termite > urxvt
+# 	- don't need a font manager
+# 	- oled screen requries alternate beightness settings, check backlight script
+
+# Hybernate on 5% charge, currently testing.
+# Follow archwiki laptop link. X1Y does not report battery drop in %.
