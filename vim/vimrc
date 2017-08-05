@@ -22,6 +22,8 @@ Plugin 'Valloric/YouCompleteMe'                     " Apparantly powerful autoco
 Plugin 'gerw/vim-latex-suite'                       " Latex folding and other stuff
 Plugin 'gioele/vim-autoswap'                        " Fixing the annoying swp file behaviour that delete a lot of my work
 Plugin 'neovimhaskell/haskell-vim'                  "Better haskell highlighting, vimscripts, tabbing, etc.
+Plugin 'SirVer/ultisnips'                           " Ultimate snippets apparently
+Plugin 'honza/vim-snippets'                         " Snippets in the engineer now
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -77,6 +79,24 @@ let g:ctrlp_working_path_mode = 0                   " Set ctrlp to respect chang
 " }}}
 
 " Completion and Snippets {{{
+" Document soon [TODO]
+let g:ycm_key_list_select_completion=["<tab>"]
+let g:ycm_key_list_previous_completion=["<S-tab>"]
+
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+let g:UltiSnipsExpandTrigger="<nop>"
+let g:ulti_expand_or_jump_res = 0
+function! <SID>ExpandSnippetOrReturn()
+  let snippet = UltiSnips#ExpandSnippetOrJump()
+  if g:ulti_expand_or_jump_res > 0
+    return snippet
+  else
+    return "\<CR>"
+  endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=<SID>ExpandSnippetOrReturn()<CR>" : "\<CR>"
+let g:UltiSnipsEditSplit="vertical"
 " }}}
 
 " Syntastic {{{
@@ -118,9 +138,12 @@ nnoremap <leader><space> :nohlsearch<CR>|           " end search highlighting
 nnoremap <leader>a :Ag |                            " pull up the silver searcher
 nnoremap <leader>f :CtrlP |                         " pull up fuzzy file search
 nnoremap <leader>n :NERDTreeToggle<CR>|             " navigate filestructure with nerdtree 
-nnoremap <leader>r :call VIMRun()<CR>| " Run the command indexed by the magic word vim-run
-nnoremap <leader>st :SyntasticToggleMode<CR>|   "Turn of Syntastic checking when you want to hide how bad your code is.
+nnoremap <leader>r :call VIMRun()<CR>|              " Run the command indexed by the magic word vim-run
+nnoremap <leader>st :SyntasticToggleMode<CR>|       "Turn of Syntastic checking when you want to hide how bad your code is.
 nnoremap <leader>sc :set spell! spelllang=en_au<CR>|        " Toggle spell checking
+nnoremap <leader>s ]s z=
+nnoremap <leader>w :w !sudo tee %|                  " Force save when you only have read access
+nnoremap <leader>l :edit %<CR>|                       " Reload the current file
 " }}}
 
 " Custom Functions {{{
@@ -158,6 +181,7 @@ noremap gV `[v`]|                                   " highlight last inserted bl
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap ; :|                                       " remap ; to :, reduce the number of shift presses required
 nnoremap <Space> i_<Esc>r|                      "Insert a single character.
+imap <s-Tab> <Plug>IMAP_JumpForward
 " }}}
 
 " Misc {{{

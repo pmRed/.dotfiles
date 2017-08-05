@@ -14,12 +14,14 @@
 \RequirePackage{microtype}      % Better kerning
 \RequirePackage{hyperref}
 \RequirePackage{lipsum}         % blindtext
+\RequirePackage{enumitem}
 
 % Mathematics
 \RequirePackage{amsmath}        % Extended math
 \RequirePackage{amssymb}        % Extended math symbols
 \RequirePackage{amsfonts}       % Further fonts
 \RequirePackage{bm}
+\RequirePackage{autobreak}
 
 % Physics
 \RequirePackage{physics}
@@ -32,6 +34,7 @@
 
 % Tables
 \RequirePackage{dcolumn}
+\RequirePackage{booktabs}
 
 % Bibliography 
 
@@ -40,12 +43,23 @@
 
 %}}}
 
+% {{{
+%}}}
+
 % Inline command redefinition {{{
 \newcommand{\ee}{\mathrm{e}}
 \newcommand{\ii}{\imath}
 \newcommand{\ml}[1]{\left#1}
 \newcommand{\mr}[1]{\right#1}
 \newcommand{\dvec}{\vec}
+%}}}
+
+% Custom symbols {{{
+\newcommand{\tens}{\bm}
+%}}}
+
+% Custom referencing commands {{{
+\newcommand{\fillref}[2]{\colorbox{red}{#1}}
 %}}}
 
 % Custom defined listing environments {{{
