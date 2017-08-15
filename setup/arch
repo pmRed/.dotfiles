@@ -9,3 +9,6 @@
 
 # Hybernate on 5% charge, currently testing.
 # Follow archwiki laptop link. X1Y does not report battery drop in %.
+# did not work, some werid issue occoured on startup.
+
+# compton composite manager

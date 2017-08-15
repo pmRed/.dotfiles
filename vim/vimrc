@@ -24,6 +24,8 @@ Plugin 'gioele/vim-autoswap'                        " Fixing the annoying swp fi
 Plugin 'neovimhaskell/haskell-vim'                  "Better haskell highlighting, vimscripts, tabbing, etc.
 Plugin 'SirVer/ultisnips'                           " Ultimate snippets apparently
 Plugin 'honza/vim-snippets'                         " Snippets in the engineer now
+Plugin 'jceb/vim-orgmode'                           " replace the stupid pdf todo, need journaling capability that isnt stupid
+Plugin 'tpope/vim-speeddating'                      " Just doing what orgmode tells me to
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -127,6 +129,7 @@ set writebackup
 " }}}
 
 " Leader Shortcuts {{{
+let maplocalleader = 'jj'                            " local leader
 let mapleader=","                                   " Remap leader key from \ to , 
 nnoremap <leader>u :GundoToggle|                    " super-undo gundo tree
 nnoremap <leader>ev :vsp $MYVIMRC<CR>|              " vim open .vimrc   
