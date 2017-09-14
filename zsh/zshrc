@@ -53,7 +53,7 @@ plugins=(git z colored-man-pages vi-mode)
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="~/.cabal:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 
@@ -74,6 +74,10 @@ export ARCHFLAGS="-arch x86_64"
 
 # Ranger Flags
 export RANGER_LOAD_DEFAULT_RC=FALSE
+
+# Matlab flags
+export J2D_D3D=false
+export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -107,3 +111,4 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
+

@@ -26,6 +26,7 @@ Plugin 'SirVer/ultisnips'                           " Ultimate snippets apparent
 Plugin 'honza/vim-snippets'                         " Snippets in the engineer now
 Plugin 'jceb/vim-orgmode'                           " replace the stupid pdf todo, need journaling capability that isnt stupid
 Plugin 'tpope/vim-speeddating'                      " Just doing what orgmode tells me to
+Plugin 'vim-scripts/utl'                            " Universal text linking
 
 call vundle#end()                                   " End list of plugins.
 filetype plugin indent on                           " Turn on plugin indentation
@@ -60,6 +61,7 @@ set showcmd                                         " Show command history
 set cursorline                                      " Highlight cursor line
 set wildmenu                                        " Show menu 
 set showmatch                                       " Show matching braces
+set splitbelow                                      " I dont use splitting correctly
 " }}}
 
 " Airline Setup {{{
@@ -129,14 +131,14 @@ set writebackup
 " }}}
 
 " Leader Shortcuts {{{
-let maplocalleader = 'jj'                            " local leader
+let maplocalleader = "'"                            " local leader
 let mapleader=","                                   " Remap leader key from \ to , 
 nnoremap <leader>u :GundoToggle|                    " super-undo gundo tree
-nnoremap <leader>ev :vsp $MYVIMRC<CR>|              " vim open .vimrc   
-nnoremap <leader>ez :vsp ~/.zshrc<CR>|              " vim open .zshrc
+nnoremap <leader>ev :sp $MYVIMRC<CR>|               " vim open .vimrc   
+nnoremap <leader>ez :sp ~/.zshrc<CR>|               " vim open .zshrc
 nnoremap <leader>sv :source $MYVIMRC<CR>|           " resource .vimrc
 nnoremap <leader>ip :PluginInstall<CR>|             " install pluggins
-nnoremap <leader>ms :mksession<CR>|                  " super save session
+nnoremap <leader>ms :mksession<CR>|                 " super save session
 nnoremap <leader><space> :nohlsearch<CR>|           " end search highlighting
 nnoremap <leader>a :Ag |                            " pull up the silver searcher
 nnoremap <leader>f :CtrlP |                         " pull up fuzzy file search
@@ -146,7 +148,7 @@ nnoremap <leader>st :SyntasticToggleMode<CR>|       "Turn of Syntastic checking 
 nnoremap <leader>sc :set spell! spelllang=en_au<CR>|        " Toggle spell checking
 nnoremap <leader>s ]s z=
 nnoremap <leader>w :w !sudo tee %|                  " Force save when you only have read access
-nnoremap <leader>l :edit %<CR>|                       " Reload the current file
+nnoremap <leader>l :edit %<CR>|                     " Reload the current file
 " }}}
 
 " Custom Functions {{{
@@ -174,7 +176,9 @@ function! VIMRun()
 endfunction
 " }}}
 
-" Training Keybindings {{{
+" Org Mode {{{
+let g:org_agenda_files = ['~/.org/index.org']
+nnoremap <leader>o :sp ~/.org/index.org <CR>|      " vim open .vimrc   
 " }}}
 
 " Custom Keybindings {{{
@@ -183,7 +187,7 @@ noremap gV `[v`]|                                   " highlight last inserted bl
 "Remove all trailing whitespace by pressing F5
 nnoremap <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap ; :|                                       " remap ; to :, reduce the number of shift presses required
-nnoremap <Space> i_<Esc>r|                      "Insert a single character.
+nnoremap <Space> i_<Esc>r|                          "Insert a single character.
 imap <s-Tab> <Plug>IMAP_JumpForward
 " }}}
 
