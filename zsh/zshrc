@@ -5,7 +5,7 @@ ZSH=/usr/share/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="lambda"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -64,9 +64,9 @@ export LC_CTYPE=en_AU.UTF-8
 #Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
 	export EDITOR='vim'
-	alias="emacs emacs -nw"
+	alias="emacs -nw"
 else
-	export EDITOR='vim'
+	export EDITOR='emacs'
 fi
 
 # Compilation flags
