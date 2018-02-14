@@ -40,17 +40,18 @@
 
 (use-package company :ensure t
   :defer t
+  :diminish company-mode
   :init (global-company-mode 1)
   :config
-  (setq company-tooltip-limit 20)                      ; bigger popup window
-  (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-  (setq company-echo-delay 0)                          ; remove annoying blinking
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  (setq company-idle-delay 0)
+  (setq company-echo-delay 0)
+  (setq company-minimum-prefix-length 2)
   )
-(use-package company-go :ensure t
-  :defer t
-  :init
-  )
+
+(use-package helm-company
+  :commands (helm-company)
+  :config (company-mode)
+)
 
 (use-package hydra :ensure t
   :config
@@ -180,12 +181,21 @@
 (setq-default indent-tabs-mode nil)
 (setq tab-width 4)
 
+(use-package adaptive-wrap :ensure t
+  :init (global-visual-line-mode +1)
+  :config
+  (set-default 'truncate-lines t)
+  (setq-default adaptive-wrap-extra-indent 2)
+  (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
+  )
+
 (use-package diminish :ensure t
   :init
   )
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(global-linum-mode 1)
 (tool-bar-mode -1)
 (setq inhibit-startup-message t)
 
@@ -265,6 +275,7 @@
     ;; Turn off RUN-TOGETHER option when spell check text-mode
     (setq-local ispell-extra-args (flyspell-detect-ispell-args)))
   (add-hook 'text-mode-hook 'text-mode-hook-setup)
+  (flyspell-mode 1)
   :config
   )
 
@@ -301,4 +312,15 @@
               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
               ("\\paragraph{%s}" . "\\paragraph*{%s}")
               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+  )
+
+(setq version-control t
+    backup-by-copying t
+    kept-new-versions 64
+    kept-old-versions 0
+    delete-old-versions nil
+   )
+
+(setq backup-directory-alist
+    '(("." . ".bak"))
   )

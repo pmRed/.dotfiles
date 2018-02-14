@@ -1,3 +1,4 @@
+#+TITLE: PrithMacs
 * Package Management
   #+BEGIN_SRC emacs-lisp
     (require 'package) 
@@ -57,17 +58,20 @@
    #+BEGIN_SRC emacs-lisp
      (use-package company :ensure t
        :defer t
+       :diminish company-mode
        :init (global-company-mode 1)
        :config
-       (setq company-tooltip-limit 20)                      ; bigger popup window
-       (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-       (setq company-echo-delay 0)                          ; remove annoying blinking
-       (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+       (setq company-idle-delay 0)
+       (setq company-echo-delay 0)
+       (setq company-minimum-prefix-length 2)
        )
-     (use-package company-go :ensure t
-       :defer t
-       :init
-       )
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package helm-company
+       :commands (helm-company)
+       :config (company-mode)
+     )
    #+END_SRC
 
 * Navigation
@@ -113,7 +117,7 @@
         ("f" helm-follow-mode))
       )
   #+END_SRC
-
+  
   #+BEGIN_SRC emacs-lisp
     (use-package which-key 
       :ensure t
@@ -224,6 +228,16 @@
      (setq tab-width 4)
    #+END_SRC
 
+   #+BEGIN_SRC emacs-lisp
+     (use-package adaptive-wrap :ensure t
+       :init (global-visual-line-mode +1)
+       :config
+       (set-default 'truncate-lines t)
+       (setq-default adaptive-wrap-extra-indent 2)
+       (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
+       )
+   #+END_SRC
+
 ** Graphical
    #+BEGIN_SRC emacs-lisp
      (use-package diminish :ensure t
@@ -234,6 +248,7 @@
    #+BEGIN_SRC emacs-lisp
      (menu-bar-mode -1)
      (scroll-bar-mode -1)
+     (global-linum-mode 1)
      (tool-bar-mode -1)
      (setq inhibit-startup-message t)
    #+END_SRC
@@ -378,3 +393,4 @@
         '(("." . ".bak"))
       )
   #+END_SRC
+
