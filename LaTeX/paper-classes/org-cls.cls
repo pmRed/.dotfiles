@@ -3,7 +3,7 @@
 \ProvidesClass{org-cls}[11/01/2017 Paper Class]
 
 % Base Class Setup {{{
-\LoadClass[aps, pra, onecolumn, superscriptaddress, showkeys]{revtex4-1}
+\LoadClass[aps,showpacs,showkeys,pra,superscriptaddress,notitlepage]{revtex4-1}
 %}}}
 
 % Required Packages {{{

@@ -18,6 +18,11 @@
   :config
   )
 
+(use-package dockerfile-mode :ensure t
+  :init
+  :config
+  )
+
 (use-package anaconda-mode :ensure t
   :init
   :config
@@ -38,6 +43,40 @@
 
 (bind-key "TAB" 'completion-at-point read-expression-map)
 
+(use-package yasnippet :ensure t
+  :init (yas-global-mode 1)
+  :config
+  (setq yas-triggers-in-field t)
+  (define-key yas-minor-mode-map [(tab)] nil)
+  (define-key yas-minor-mode-map (kbd "TAB") nil)
+  )
+  (defun add-yasnippet-ac-sources ()
+    (add-to-list 'ac-sources 'ac-source-yasnippet))
+  (add-hook 'python-mode-hook 'add-yasnippet-ac-sources)
+(use-package yasnippet-snippets :ensure t
+  :init
+  )
+
+(use-package auto-complete
+    :ensure t
+    :defer t
+    :init
+    (setq ac-auto-start 0
+          ac-delay 0.
+          ac-quick-help-delay 0.
+          ac-use-fuzzy t
+          ac-fuzzy-enable t
+          tab-always-indent 'complete
+          ac-dwim t)
+    (global-auto-complete-mode t)
+    :config
+    (require 'auto-complete-config)
+    (ac-config-default)    
+    (defun add-yasnippet-ac-sources ()
+       (add-to-list 'ac-sources 'ac-source-yasnippet))
+    (add-hook 'python-mode-hook 'add-yasnippet-ac-sources)
+    )
+
 (use-package company :ensure t
   :defer t
   :diminish company-mode
@@ -48,10 +87,9 @@
   (setq company-minimum-prefix-length 2)
   )
 
-(use-package helm-company
-  :commands (helm-company)
-  :config (company-mode)
-)
+(use-package fuzzy :ensure t
+  :defer t
+  )
 
 (use-package hydra :ensure t
   :config

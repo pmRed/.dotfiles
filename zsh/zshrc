@@ -97,6 +97,9 @@ eval $(thefuck --alias fu)
 # Personal Aliases
 alias prep-env='export GIT_PATH=`git rev-parse --show-toplevel`; export PATH=$GIT_PATH/bin:$PATH;'
 
+# Start pyenv
+eval "$(pyenv init -)"
+
 # Always 2 sided print
 alias lprt='lpr -o sides=two-sided-long-edge'
 
